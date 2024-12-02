@@ -37,7 +37,7 @@ describe("nft-token", () => {
 
     // SPL Token default = 9 decimals
     const transactionSignature = await program.methods
-        .createTokenMint(6, metadata.name, metadata.symbol, metadata.uri)
+        .createTokenMint(9, metadata.name, metadata.symbol, metadata.uri)
         .accounts({
           payer: wallet.publicKey,
           mintAccount: mintKeypair.publicKey,
