@@ -27,9 +27,9 @@ describe("nft-token", () => {
   const program = anchor.workspace.CreateToken as Program<CreateToken>;
 
     const metadata = {
-        name: 'Solana Gold',
-        symbol: 'GOLDSOL',
-        uri: 'https://raw.githubusercontent.com/solana-developers/program-examples/new-examples/tokens/tokens/.assets/spl-token.json',
+        name: 'Home Did Token',
+        symbol: 'HOME-DID',
+        uri: 'https://github.com/tnexus/assets/blob/main/token/home.json',
     };
 
   it("Create an SPL Token!", async () => {
@@ -37,7 +37,7 @@ describe("nft-token", () => {
 
     // SPL Token default = 9 decimals
     const transactionSignature = await program.methods
-        .createTokenMint(9, metadata.name, metadata.symbol, metadata.uri)
+        .createTokenMint(6, metadata.name, metadata.symbol, metadata.uri)
         .accounts({
           payer: wallet.publicKey,
           mintAccount: mintKeypair.publicKey,
