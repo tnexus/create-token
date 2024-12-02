@@ -24,12 +24,7 @@ describe("nft-token", () => {
   const connection = provider.connection;
   const wallet = provider.wallet as Wallet;
 
-  // const program = anchor.workspace.CreateToken as Program<CreateToken>;
-
-    const programId = new PublicKey("8YX6Mpt3EA4fM2AgtZPprpFW7MEW8LUw97s2ZxG1wyin");
-
-    // 使用 Program.at 加载程序实例
-
+  const program = anchor.workspace.CreateToken as Program<CreateToken>;
 
     const metadata = {
         name: 'Solana Gold',
@@ -38,22 +33,20 @@ describe("nft-token", () => {
     };
 
   it("Create an SPL Token!", async () => {
-    // const mintKeypair = new Keypair();
-    //   const program = new anchor.Program<CreateToken>(IDL, provider);
-    //   // const program = await anchor.Program.at(programId);
-    //
-    // // SPL Token default = 9 decimals
-    // const transactionSignature = await program.methods
-    //     .createTokenMint(9, metadata.name, metadata.symbol, metadata.uri)
-    //     .accounts({
-    //       payer: wallet.publicKey,
-    //       mintAccount: mintKeypair.publicKey,
-    //     })
-    //     .signers([mintKeypair])
-    //     .rpc();
-    //
-    // console.log('Success!');
-    // console.log(`   Mint Address: ${mintKeypair.publicKey}`);
-    // console.log(`   Transaction Signature: ${transactionSignature}`);
+    const mintKeypair = new Keypair();
+
+    // SPL Token default = 9 decimals
+    const transactionSignature = await program.methods
+        .createTokenMint(9, metadata.name, metadata.symbol, metadata.uri)
+        .accounts({
+          payer: wallet.publicKey,
+          mintAccount: mintKeypair.publicKey,
+        })
+        .signers([mintKeypair])
+        .rpc();
+
+    console.log('Success!');
+    console.log(`   Mint Address: ${mintKeypair.publicKey}`);
+    console.log(`   Transaction Signature: ${transactionSignature}`);
   });
 });

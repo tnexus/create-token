@@ -30,23 +30,23 @@ describe('Bankrun example', async () => {
     uri: 'https://raw.githubusercontent.com/solana-developers/program-examples/new-examples/tokens/tokens/.assets/spl-token.json',
   };
 
-  it('Create an SPL Token!', async () => {
-    // Generate new keypair to use as address for mint account.
-    const mintKeypair = new Keypair();
-
-    // SPL Token default = 9 decimals
-    const transactionSignature = await program.methods
-      .createTokenMint(9, metadata.name, metadata.symbol, metadata.uri)
-      .accounts({
-        payer: payer.publicKey,
-        mintAccount: mintKeypair.publicKey,
-      })
-      .signers([mintKeypair])
-      .rpc();
-
-    console.log('Success!');
-    console.log(`   Mint Address: ${mintKeypair.publicKey}`);
-    console.log(`   Transaction Signature: ${transactionSignature}`);
-  });
+  // it('Create an SPL Token!', async () => {
+  //   // Generate new keypair to use as address for mint account.
+  //   const mintKeypair = new Keypair();
+  //
+  //   // SPL Token default = 9 decimals
+  //   const transactionSignature = await program.methods
+  //     .createTokenMint(9, metadata.name, metadata.symbol, metadata.uri)
+  //     .accounts({
+  //       payer: payer.publicKey,
+  //       mintAccount: mintKeypair.publicKey,
+  //     })
+  //     .signers([mintKeypair])
+  //     .rpc();
+  //
+  //   console.log('Success!');
+  //   console.log(`   Mint Address: ${mintKeypair.publicKey}`);
+  //   console.log(`   Transaction Signature: ${transactionSignature}`);
+  // });
 
 });
